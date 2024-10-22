@@ -4,6 +4,8 @@ package org.uv.tpcsw.practica03;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.Query;
 
 public class DAOEmpleado implements IDAOGeneral <Empleado, Long> {
 
@@ -20,61 +22,57 @@ public class DAOEmpleado implements IDAOGeneral <Empleado, Long> {
     
     
     @Override
-    public boolean delete(Long id) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public boolean delete(Long pojo) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
-
-        Empleado empleado = session.get(Empleado.class, id);
-        if (empleado != null) {
-            session.delete(empleado);
+        Empleado emp = session.get(Empleado.class, pojo);
+        if (emp != null) {
+            session.delete(emp);
             t.commit();
             return true;
-        } else {
-            t.rollback();
-            return false;
         }
+        t.rollback();
+        return false;
     }
 
     @Override
     public boolean update(Empleado pojo, Long id) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
-
-        Empleado empleadoExistente = session.get(Empleado.class, id);
-        if (empleadoExistente != null) {
-            empleadoExistente.setNombre(pojo.getNombre());
-            empleadoExistente.setDireccion(pojo.getDireccion());
-            empleadoExistente.setTelefono(pojo.getTelefono());
-            // Otros campos que desees actualizar
-            session.update(empleadoExistente);
+        Empleado emp = session.get(Empleado.class, id);
+        if (emp != null) {
+            emp.setNombre(pojo.getNombre());
+            emp.setDireccion(pojo.getDireccion());
+            emp.setTelefono(pojo.getTelefono());
+            session.update(emp);
             t.commit();
             return true;
-        } else {
-            t.rollback();
-            return false;
         }
+                t.rollback();
+        return false;
     }
 
     @Override
     public List<Empleado> findAll() {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+     SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
-
-        List<Empleado> empleados = session.createQuery("from Empleado", Empleado.class).list();
+        Query<Empleado> query = session.createQuery("from Empleado", Empleado.class);
+        List<Empleado> empleados = query.list();
         t.commit();
-
         return empleados;
     }
 
     @Override
     public Empleado findByID(Long id) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+         SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
-
-        Empleado empleado = session.get(Empleado.class, id);
+        Empleado emp = session.get(Empleado.class, id);
         t.commit();
-
-        return empleado;
+        return emp;
     }
 
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.uv.tpcsw.practica03;
 
 import java.io.Serializable;
@@ -10,31 +6,49 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-        
         // todo pojo debe ser serializable
 @Entity
-@Table(name = "empleados2")
+@Table(name = "empleado2")
 public class Empleado implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empleados2_clave_seq")
-    @SequenceGenerator(name = "empleados2_clave_seq", sequenceName = "empleados2_clave_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "empleado2_clave_seq")
+    @SequenceGenerator(name = "empleado2_clave_seq", sequenceName = "empleado2_clave_seq", initialValue = 1, allocationSize = 1)
+   
     @Column
-     private String clave; 
+     private long clave; 
+    
     @Column
     private String nombre;
+    
     @Column
     private String direccion;
+    
     @Column
     private String telefono;
 
-    public String getClave() {
+    @ManyToOne
+    @JoinColumn(name = "depto_clave")
+    private Departamento depto;
+
+    public Departamento getDepto() {
+        return depto;
+    }
+
+    public void setDepto(Departamento depto) {
+        this.depto = depto;
+    }
+    
+            
+    public long getClave() {
         return clave;
     }
 
-    public void setClave(String clave) {
+    public void setClave(long clave) {
         this.clave = clave;
     }
 

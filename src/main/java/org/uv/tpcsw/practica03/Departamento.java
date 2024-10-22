@@ -1,6 +1,4 @@
-
 package org.uv.tpcsw.practica03;
-
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,8 +26,6 @@ public class Departamento implements Serializable {
     @Column(name = "clave")
     
     private long clave;
-    
-    
     private String nombre;
     
     @OneToMany(mappedBy = "depto", fetch = FetchType.EAGER)
