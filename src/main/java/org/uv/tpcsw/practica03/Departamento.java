@@ -23,8 +23,8 @@ public class Departamento implements Serializable {
     @SequenceGenerator(name = "departamentos_clave_seq",
             sequenceName = "departamentos_clave_seq",
             initialValue = 1, allocationSize = 1)
+   
     @Column(name = "clave")
-    
     private long clave;
     private String nombre;
     

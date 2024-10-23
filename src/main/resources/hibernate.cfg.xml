@@ -17,5 +17,6 @@
         <property name="current_session_context_class">thread</property>
         
         <mapping class="org.uv.tpcsw.practica03.Empleado"/>
+        <mapping class="org.uv.tpcsw.practica03.Departamento"/>
     </session-factory>
 </hibernate-configuration>

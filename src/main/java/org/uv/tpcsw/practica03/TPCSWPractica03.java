@@ -15,7 +15,11 @@ Empleado empleado = new Empleado ();
 empleado.setNombre("Sam");
 empleado.setDireccion("Av2");
 empleado.setTelefono("1234");
-        
+SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+       Transaction t=session.beginTransaction();
+       session.save(empleado);
+
         
 //        
 //        Departamento departamento = new Departamento();
@@ -27,18 +31,18 @@ empleado.setTelefono("1234");
 //        
 //       t.commit();
 
-SessionFactory sf = HibernateUtil.getSessionFactory();
-Session session = sf.getCurrentSession();
-Transaction t = session.beginTransaction();
-Departamento dep=session.get(Departamento.class, 1L);
-
-        if (dep != null) {
-            System.out.println("Clave:" +dep.getClave()+ "nom:" + dep.getNombre());
-            Set<Empleado> lstEmpleado = dep.getEmpleados();
-            for (Empleado empleado1 : lstEmpleado) {
-                System.out.println("clave:" + empleado1.getNombre());
-            }
-        }
+//SessionFactory sf = HibernateUtil.getSessionFactory();
+//Session session = sf.getCurrentSession();
+//Transaction t = session.beginTransaction();
+//Departamento dep=session.get(Departamento.class, 1L);
+//
+//        if (dep != null) {
+//            System.out.println("Clave:" +dep.getClave()+ "nom:" + dep.getNombre());
+//            Set<Empleado> lstEmpleado = dep.getEmpleados();
+//            for (Empleado empleado1 : lstEmpleado) {
+//                System.out.println("clave:" + empleado1.getNombre());
+//            }
+//        }
         t.commit();
 
     }
