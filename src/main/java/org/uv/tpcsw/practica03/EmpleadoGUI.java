@@ -360,17 +360,12 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         empleado.setTelefono(txtTelefono.getText());
         DAOEmpleado dao = new DAOEmpleado();
         boolean res = dao.save(empleado);
+        session.save(empleado);
 
         if(res){
             // Add the new employee to the JTable
-            Object[] rowData = {
-                empleado.getClave(),
-                empleado.getNombre(),
-                empleado.getDireccion(),
-                empleado.getTelefono()
-            };
 
-            // Add row data to table model
+           
 
             JOptionPane.showMessageDialog(this, "se guardo");
         } else
