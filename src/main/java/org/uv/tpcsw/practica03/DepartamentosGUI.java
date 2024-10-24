@@ -56,7 +56,10 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        DepIDTabla = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        DepIDBuscar = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -224,14 +227,14 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 
         Eliminar.addTab("Modificar", jPanel3);
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        DepIDTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -242,30 +245,47 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(DepIDTabla);
+
+        jLabel7.setText("Buscar por ID");
+
+        jLabel8.setText("ID");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(60, 60, 60))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(156, 156, 156))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jButton2))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel8)
+                        .addGap(111, 111, 111)
+                        .addComponent(DepIDBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepIDBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(345, 345, 345))
         );
 
         Eliminar.addTab("Buscar por ID", jPanel4);
@@ -278,6 +298,7 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTable2.setMaximumSize(new java.awt.Dimension(400, 100));
         jScrollPane2.setViewportView(jTable2);
 
         BtnBuscarTodosEmpleados.setText("Buscar Todos");
@@ -424,7 +445,34 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String[] columnNames = {"Clave", "Nombre",};
+        int id = Integer.valueOf(DepIDBuscar.getText());
         
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        // Obtener los datos de la base de datos usando Hibernate
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List<Departamento> listaDepartamentos = session.createQuery("from Departamento", Departamento.class).list();
+
+        // Llenar el modelo de la tabla con los datos obtenidos
+        for (Departamento dep : listaDepartamentos) {
+               if (dep.getClave() == id){
+                
+            Object[] rowData = {
+             
+                dep.getClave(),
+                dep.getNombre(),
+            };
+            model.addRow(rowData);
+            System.out.println("Clave: " + dep.getClave() + ", Nombre: " + dep.getNombre() );
+        }
+        }
+
+        session.getTransaction().commit();
+
+        // Añadir la tabla dentro de un JScrollPane para hacerla desplazable
+        DepIDTabla.setModel(model);
         
         
         
@@ -435,6 +483,8 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarTodosEmpleados;
     private javax.swing.JLabel Clave;
+    private javax.swing.JTextField DepIDBuscar;
+    private javax.swing.JTable DepIDTabla;
     private javax.swing.JTabbedPane Eliminar;
     private javax.swing.JButton btnEliminarDep;
     private javax.swing.JButton btnGuardarModDep;
@@ -447,6 +497,8 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jNombreDep;
     private javax.swing.JTextField jNombreDepEl;
     private javax.swing.JTextField jNombreDepMod;
@@ -457,7 +509,6 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
