@@ -1,6 +1,7 @@
 
 package org.uv.tpcsw.practica03;
 
+import java.util.List;
 import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,24 +12,36 @@ public class TPCSWPractica03 {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         
-Empleado empleado = new Empleado ();
-empleado.setNombre("Sam");
-empleado.setDireccion("Av2");
-empleado.setTelefono("1234");
-SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.getCurrentSession();
-       Transaction t=session.beginTransaction();
-       session.save(empleado);
+//Empleado empleado = new Empleado ();
+//empleado.setNombre("Juan");
+//empleado.setDireccion("Av3");
+//empleado.setTelefono("12345");
+//SessionFactory sf = HibernateUtil.getSessionFactory();
+//        Session session = sf.getCurrentSession();
+//       Transaction t=session.beginTransaction();
+//       session.save(empleado);
+//
+// BUSCAR TODOS los empleados
 
-        
+
+//        List<Empleado> listaEmpleados = session.createQuery("from Empleado").list();
+//        System.out.println("Lista de todos los empleados:");
+//        for (Empleado emp : listaEmpleados) {
+//            System.out.println("Clave: " + emp.getClave() + ", Nombre: " + emp.getNombre() + ", Direccion: " + emp.getDireccion() + ", Teléfono: " + emp.getTelefono());
+//        }
+//
 //        
+//        
+
+// Agregar Departamento
+
 //        Departamento departamento = new Departamento();
-//        departamento.setNombre("Administracion");
+//        departamento.setNombre("Contaduria");
 //        SessionFactory sf = HibernateUtil.getSessionFactory();
 //        Session session = sf.getCurrentSession();
 //        Transaction t=session.beginTransaction();
 //        session.save(departamento);
-//        
+////        
 //       t.commit();
 
 //SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -43,7 +56,7 @@ SessionFactory sf = HibernateUtil.getSessionFactory();
 //                System.out.println("clave:" + empleado1.getNombre());
 //            }
 //        }
-        t.commit();
+//        t.commit();
 
     }
 }
