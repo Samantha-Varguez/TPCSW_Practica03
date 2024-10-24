@@ -5,6 +5,7 @@
 package org.uv.tpcsw.practica03;
 
 import java.util.List;
+import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -46,7 +47,16 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
         btnEliminarDep = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jNombreDepMod = new javax.swing.JTextField();
+        btnGuardarModDep = new javax.swing.JButton();
+        Clave = new javax.swing.JLabel();
+        jClaveDepMod = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -156,28 +166,106 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 
         Eliminar.addTab("Eliminar", jPanel2);
 
+        jLabel5.setText("Modificar");
+
+        jLabel6.setText("Nombre nuevo");
+
+        btnGuardarModDep.setText("Guardar");
+        btnGuardarModDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarModDepActionPerformed(evt);
+            }
+        });
+
+        Clave.setText("Clave de departamento a actualizar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jNombreDepMod, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(jClaveDepMod, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuardarModDep)
+                .addGap(245, 245, 245))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel5)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jClaveDepMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jNombreDepMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(68, 68, 68)
+                .addComponent(btnGuardarModDep)
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         Eliminar.addTab("Modificar", jPanel3);
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(60, 60, 60))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         Eliminar.addTab("Buscar por ID", jPanel4);
@@ -282,53 +370,94 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 //        
        t.commit();
        
+       
         JOptionPane.showMessageDialog(this, "se guardo");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnEliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepActionPerformed
         // TODO add your handling code here:
-        
+
         Departamento departamento = new Departamento();
         int clave = Integer.valueOf(jNombreDepEl.getText());
         departamento.setClave(clave);
-        
-           SessionFactory sf = HibernateUtil.getSessionFactory();
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.getCurrentSession();
-                Transaction t=session.beginTransaction();
-                
-        Departamento departamentoEncontrado = session.get(Departamento.class,  departamento.getClave());
-   
-                if (departamentoEncontrado != null) {
+        Transaction t = session.beginTransaction();
+
+        Departamento departamentoEncontrado = session.get(Departamento.class, departamento.getClave());
+
+        if (departamentoEncontrado != null) {
             session.delete(departamentoEncontrado);
-            JOptionPane.showMessageDialog(this,  "Departamento eliminado: " + departamentoEncontrado.getNombre());
-            
+            JOptionPane.showMessageDialog(this, "Departamento eliminado: " + departamentoEncontrado.getNombre());
+
         }
-        
-        
+        t.commit();
+
+
     }//GEN-LAST:event_btnEliminarDepActionPerformed
 
     private void jNombreDepElActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreDepElActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jNombreDepElActionPerformed
 
+    private void btnGuardarModDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarModDepActionPerformed
+        // TODO add your handling code here:
+        Departamento departamento = new Departamento();
+        departamento.setClave(Integer.valueOf(jClaveDepMod.getText()));
+        
+           SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        
+        
+         Departamento departamentoEncontrado = session.get(Departamento.class, departamento.getClave());
+        if (departamentoEncontrado != null) {
+            departamentoEncontrado.setNombre(jNombreDepMod.getText());
+            session.update(departamentoEncontrado);
+            System.out.println("Departamento actualizado: " + departamentoEncontrado.getNombre());
+            JOptionPane.showMessageDialog(this, "Departamento " + departamento.getClave() + " actualizado a: " + departamentoEncontrado.getNombre());
+            t.commit();
+        }
+        
+    }//GEN-LAST:event_btnGuardarModDepActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarTodosEmpleados;
+    private javax.swing.JLabel Clave;
     private javax.swing.JTabbedPane Eliminar;
     private javax.swing.JButton btnEliminarDep;
+    private javax.swing.JButton btnGuardarModDep;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jClaveDepMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jNombreDep;
     private javax.swing.JTextField jNombreDepEl;
+    private javax.swing.JTextField jNombreDepMod;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
