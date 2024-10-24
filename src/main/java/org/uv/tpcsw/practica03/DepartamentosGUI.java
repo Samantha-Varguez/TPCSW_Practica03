@@ -41,6 +41,10 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jNombreDepEl = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        btnEliminarDep = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -100,15 +104,54 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
 
         Eliminar.addTab("Guardar", jPanel1);
 
+        jNombreDepEl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNombreDepElActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Clave");
+
+        btnEliminarDep.setText("Eliminar");
+        btnEliminarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDepActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Eliminar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jNombreDepEl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                        .addComponent(btnEliminarDep)
+                        .addGap(92, 92, 92))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarDep)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jNombreDepEl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
 
         Eliminar.addTab("Eliminar", jPanel2);
@@ -242,14 +285,44 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "se guardo");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnEliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepActionPerformed
+        // TODO add your handling code here:
+        
+        Departamento departamento = new Departamento();
+        int clave = Integer.valueOf(jNombreDepEl.getText());
+        departamento.setClave(clave);
+        
+           SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+                Transaction t=session.beginTransaction();
+                
+        Departamento departamentoEncontrado = session.get(Departamento.class,  departamento.getClave());
+   
+                if (departamentoEncontrado != null) {
+            session.delete(departamentoEncontrado);
+            JOptionPane.showMessageDialog(this,  "Departamento eliminado: " + departamentoEncontrado.getNombre());
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnEliminarDepActionPerformed
+
+    private void jNombreDepElActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreDepElActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNombreDepElActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarTodosEmpleados;
     private javax.swing.JTabbedPane Eliminar;
+    private javax.swing.JButton btnEliminarDep;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jNombreDep;
+    private javax.swing.JTextField jNombreDepEl;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

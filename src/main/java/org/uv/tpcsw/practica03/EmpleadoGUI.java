@@ -49,6 +49,10 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jNombreEmpEl = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnEliminarDep = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         BtnBuscarTodosEmpleados = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -106,7 +110,7 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                     .addComponent(txtNombre)
                     .addComponent(txtTelefono))
                 .addGap(43, 43, 43)
@@ -173,15 +177,54 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
 
         TabBuscarID.addTab("Modificar", jPanel3);
 
+        jNombreEmpEl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNombreEmpElActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Clave");
+
+        jLabel7.setText("Eliminar");
+
+        btnEliminarDep.setText("Eliminar");
+        btnEliminarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDepActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jNombreEmpEl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                        .addComponent(btnEliminarDep)
+                        .addGap(92, 92, 92))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel7)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarDep)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jNombreEmpEl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         TabBuscarID.addTab("Eliminar", jPanel4);
@@ -334,16 +377,45 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_BtnBuscarTodosEmpleadosActionPerformed
 
+    private void jNombreEmpElActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreEmpElActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNombreEmpElActionPerformed
+
+    private void btnEliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepActionPerformed
+        // TODO add your handling code here:
+
+        Empleado empleado = new Empleado();
+        int clave = Integer.valueOf(jNombreEmpEl.getText());
+        empleado.setClave(clave);
+
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+        Transaction t=session.beginTransaction();
+
+        Empleado empleadoEncontrado = session.get(Empleado.class,  empleado.getClave());
+
+        if (empleadoEncontrado != null) {
+            session.delete(empleadoEncontrado);
+            JOptionPane.showMessageDialog(this,  "Empleado eliminado: " + empleadoEncontrado.getNombre());
+
+        }
+
+    }//GEN-LAST:event_btnEliminarDepActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarTodosEmpleados;
     private javax.swing.JTabbedPane TabBuscarID;
+    private javax.swing.JButton btnEliminarDep;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField jNombreEmpEl;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
