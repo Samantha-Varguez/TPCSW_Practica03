@@ -23,9 +23,7 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
 
 
     public EmpleadoGUI() {
-        initComponents();
-        
-
+        initComponents();  
     }
 
     /**
@@ -79,10 +77,15 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         EmpMod = new javax.swing.JTextField();
 
         setClosable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TabBuscarID.setPreferredSize(new java.awt.Dimension(600, 400));
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("Guardar");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 97, 168, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,20 +93,27 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
 
         jLabel4.setText("Nombre");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 41, -1, -1));
 
         jLabel5.setText("Direccion");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 69, -1, -1));
 
         jLabel6.setText("Telefono");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 100, -1, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 168, -1));
+        jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 66, 168, -1));
 
         Departamento.setText("Departamento");
+        jPanel2.add(Departamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 140, -1, -1));
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -119,69 +129,25 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(Departamento))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono))
-                        .addGap(49, 49, 49)
-                        .addComponent(btnGuardar)))
-                .addContainerGap(130, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar)
-                    .addComponent(jLabel5))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Departamento)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(305, Short.MAX_VALUE))
-        );
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 137, 165, -1));
 
         TabBuscarID.addTab("Guardar", jPanel2);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jNombreEmpEl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNombreEmpElActionPerformed(evt);
             }
         });
+        jPanel4.add(jNombreEmpEl, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 61, 163, -1));
 
         jLabel3.setText("Clave");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 61, -1, -1));
 
         jLabel7.setText("Eliminar");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 21, -1, -1));
 
         btnEliminarDep.setText("Eliminar");
         btnEliminarDep.addActionListener(new java.awt.event.ActionListener() {
@@ -189,43 +155,12 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 btnEliminarDepActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jNombreEmpEl, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(btnEliminarDep)
-                        .addGap(92, 92, 92))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel7)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarDep)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jNombreEmpEl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(381, Short.MAX_VALUE))
-        );
+        jPanel4.add(btnEliminarDep, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 61, -1, -1));
 
         TabBuscarID.addTab("Eliminar", jPanel4);
 
         jPanel5.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnBuscarTodosEmpleados.setText("Buscar Todos");
         BtnBuscarTodosEmpleados.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +168,7 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 BtnBuscarTodosEmpleadosActionPerformed(evt);
             }
         });
+        jPanel5.add(BtnBuscarTodosEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -243,35 +179,15 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
             }
         ));
         jTable2.setMaximumSize(new java.awt.Dimension(400, 100));
+        jTable2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTable2);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(BtnBuscarTodosEmpleados)
-                .addGap(32, 32, 32))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(BtnBuscarTodosEmpleados))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 500, 370));
 
         TabBuscarID.addTab("Buscar Todos", jPanel5);
 
         jPanel6.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Buscar.setText("Buscar");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,8 +195,11 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 BuscarActionPerformed(evt);
             }
         });
+        jPanel6.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 25, -1, -1));
+        jPanel6.add(EmpIDBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 25, 170, -1));
 
         jLabel11.setText("ID");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 28, -1, -1));
 
         EmpleadosporID.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,54 +215,33 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         EmpleadosporID.setMaximumSize(new java.awt.Dimension(400, 100));
         jScrollPane1.setViewportView(EmpleadosporID);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel11)
-                        .addGap(47, 47, 47)
-                        .addComponent(EmpIDBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Buscar))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap(47, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(141, 141, 141))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpIDBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(Buscar))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 74, 424, 231));
 
         TabBuscarID.addTab("Buscar por ID", jPanel6);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Modificar");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 19, 116, -1));
+        jPanel3.add(EmpModTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 166, 142, -1));
+        jPanel3.add(EmpModDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 138, 142, -1));
 
         EmpModNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpModNombreActionPerformed(evt);
             }
         });
+        jPanel3.add(EmpModNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 110, 142, -1));
 
         jLabel8.setText("Nombre");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 116, -1, -1));
 
         jLabel9.setText("Direccion");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 138, -1, -1));
 
         jLabel10.setText("Telefono");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 166, -1, -1));
 
         btnGuardarModEmp.setText("Guardar");
         btnGuardarModEmp.addActionListener(new java.awt.event.ActionListener() {
@@ -351,8 +249,10 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 btnGuardarModEmpActionPerformed(evt);
             }
         });
+        jPanel3.add(btnGuardarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 138, -1, -1));
 
         Departamento1.setText("Departamento");
+        jPanel3.add(Departamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 206, -1, -1));
 
         Session sess = HibernateUtil.getSessionFactory().getCurrentSession();
         sess.beginTransaction();
@@ -372,107 +272,21 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 203, 165, -1));
 
         Clave.setText("Id de empleado a modificar:");
+        jPanel3.add(Clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 51, -1, -1));
 
         EmpMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmpModActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Clave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(EmpMod, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(Departamento1)
-                        .addGap(30, 30, 30)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(98, 98, 98)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpModTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmpModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(EmpModDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(btnGuardarModEmp)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addGap(13, 13, 13)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Clave)
-                    .addComponent(EmpMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(EmpModNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(EmpModDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnGuardarModEmp)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpModTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Departamento1)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(239, Short.MAX_VALUE))
-        );
+        jPanel3.add(EmpMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 48, 125, -1));
 
         TabBuscarID.addTab("Modificar", jPanel3);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(TabBuscarID, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TabBuscarID, javax.swing.GroupLayout.PREFERRED_SIZE, 449, Short.MAX_VALUE)
-                .addGap(27, 27, 27))
-        );
+        getContentPane().add(TabBuscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 780, 449));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -480,25 +294,25 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
-                SessionFactory sf = HibernateUtil.getSessionFactory();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
+
+        Departamento selectedDepartamento = (Departamento) jComboBox1.getSelectedItem();
+
         
         
-        
-       Departamento selectedDepartamento = (Departamento) jComboBox1.getSelectedItem();
         
         Empleado empleado = new Empleado();
         empleado.setNombre(txtNombre.getText());
         empleado.setDireccion(txtDireccion.getText());
         empleado.setTelefono(txtTelefono.getText());
-       empleado.setDepto(selectedDepartamento);
+        empleado.setDepto(selectedDepartamento);
 
-      
         session.save(empleado);
 
-            JOptionPane.showMessageDialog(this, "se guardo");
- 
+        JOptionPane.showMessageDialog(this, "se guardo");
+
         t.commit();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -522,12 +336,13 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         
         // Llenar el modelo de la tabla con los datos obtenidos
         for (Empleado emp : listaEmpleados) {
+            String nombreDepartamento = emp.getDepto() != null ? emp.getDepto().getNombre() : "Sin departamento";
             Object[] rowData = {
                 emp.getClave(),
                 emp.getNombre(),
                 emp.getDireccion(),
                 emp.getTelefono(), 
-                emp.getDepto()
+                nombreDepartamento
             };
             model.addRow(rowData);
             System.out.println("Clave: " + emp.getClave() + ", Nombre: " + emp.getNombre() + ", Direccion: " + emp.getDireccion() + ", Teléfono: " + emp.getTelefono());
@@ -580,15 +395,18 @@ t.commit();
         Session session = sf.getCurrentSession();
         Transaction t = session.beginTransaction();
 
+        String selectedName = (String) jComboBox2.getSelectedItem();
+        
         Map<String, Departamento> departmentMap = new HashMap<>();
+        
         List<Departamento> listaDepartamentos = session.createQuery("from Departamento", Departamento.class).list();
 
         for (Departamento departamento : listaDepartamentos) {
             jComboBox2.addItem(departamento.getNombre());  // Add department name to JComboBox
-            departmentMap.put(departamento.getNombre(), departamento);  // Map name to object
+            departmentMap.put(departamento.getNombre(), departamento);  // Map name to object]
         }
 
-        String selectedName = (String) jComboBox2.getSelectedItem();
+        
         if (selectedName != null) {
             Departamento selectedDepartamento = departmentMap.get(selectedName);  // Get the object from the map
             System.out.println("Selected Departamento: " + selectedDepartamento.getNombre());
@@ -598,7 +416,8 @@ t.commit();
         if (empleadoEncontrado != null) {
             empleadoEncontrado.setNombre(EmpModNombre.getText());
             empleadoEncontrado.setDireccion(EmpModDireccion.getText());
-            empleadoEncontrado.setTelefono(title);
+            empleadoEncontrado.setTelefono(EmpModTelefono.getText());
+            empleadoEncontrado.setDepto(departmentMap.get(selectedName));
 
             session.update(empleadoEncontrado);
             System.out.println("Departamento actualizado: " + empleadoEncontrado.getNombre());
