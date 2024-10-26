@@ -75,6 +75,7 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         Clave = new javax.swing.JLabel();
         EmpMod = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,6 +124,7 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         for (Departamento departamento : listaDepartamentos) {
             jComboBox1.addItem(departamento.getNombre());
         }
+        jComboBox1.setModel(null);
         session.getTransaction().commit();
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +286,9 @@ public class EmpleadoGUI extends javax.swing.JInternalFrame {
         });
         jPanel3.add(EmpMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 48, 125, -1));
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+
         TabBuscarID.addTab("Modificar", jPanel3);
 
         getContentPane().add(TabBuscarID, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 780, 449));
@@ -427,10 +432,6 @@ t.commit();
 t.commit();
     }//GEN-LAST:event_btnGuardarModEmpActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
         
@@ -479,6 +480,10 @@ t.commit();
         // TODO add your handling code here:
     }//GEN-LAST:event_EmpModActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarTodosEmpleados;
@@ -498,6 +503,7 @@ t.commit();
     private javax.swing.JButton btnGuardarModEmp;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
