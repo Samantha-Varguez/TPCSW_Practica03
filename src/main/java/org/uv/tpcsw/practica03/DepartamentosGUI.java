@@ -4,6 +4,15 @@
  */
 package org.uv.tpcsw.practica03;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author samantha
@@ -26,21 +35,437 @@ public class DepartamentosGUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        empNombre = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        empClave = new javax.swing.JTextField();
+        btnBuscarIDEmp = new javax.swing.JButton();
+        btnGuardarEmp = new javax.swing.JButton();
+        btnModificarEmp = new javax.swing.JButton();
+        btnEliminarEmp = new javax.swing.JButton();
+        btnBuscarTodosEmp = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaEmpleados = new javax.swing.JTable();
+        depNombre = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        depClave = new javax.swing.JTextField();
+        btnBuscarIDDep = new javax.swing.JButton();
+        btnGuardarDep = new javax.swing.JButton();
+        btnModificarDep = new javax.swing.JButton();
+        btnEliminarDep = new javax.swing.JButton();
+        btnBuscarTodosDep = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaDepartamentos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        empNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Nombre");
+
+        jLabel2.setText("Clave");
+
+        btnBuscarIDEmp.setText("Buscar por ID");
+        btnBuscarIDEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarIDEmpActionPerformed(evt);
+            }
+        });
+
+        btnGuardarEmp.setText("Guardar");
+        btnGuardarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEmpActionPerformed(evt);
+            }
+        });
+
+        btnModificarEmp.setText("Modificar");
+        btnModificarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarEmpActionPerformed(evt);
+            }
+        });
+
+        btnEliminarEmp.setText("Eliminar");
+        btnEliminarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEmpActionPerformed(evt);
+            }
+        });
+
+        btnBuscarTodosEmp.setText("Buscar Todos");
+        btnBuscarTodosEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTodosEmpActionPerformed(evt);
+            }
+        });
+
+        TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Clave", "Nombre", "Direccion", "Telefono", "Departamento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TablaEmpleados);
+
+        setClosable(true);
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(700, 500));
+
+        depNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Nombre");
+
+        jLabel3.setText("Clave");
+
+        btnBuscarIDDep.setText("Buscar por ID");
+        btnBuscarIDDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarIDDepActionPerformed(evt);
+            }
+        });
+
+        btnGuardarDep.setText("Guardar");
+        btnGuardarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarDepActionPerformed(evt);
+            }
+        });
+
+        btnModificarDep.setText("Modificar");
+        btnModificarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarDepActionPerformed(evt);
+            }
+        });
+
+        btnEliminarDep.setText("Eliminar");
+        btnEliminarDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarDepActionPerformed(evt);
+            }
+        });
+
+        btnBuscarTodosDep.setText("Buscar Todos");
+        btnBuscarTodosDep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarTodosDepActionPerformed(evt);
+            }
+        });
+
+        TablaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Clave", "Nombre"
+            }
+        ));
+        jScrollPane2.setViewportView(TablaDepartamentos);
+
+        jLabel1.setFont(new java.awt.Font("Monocraft", 1, 18)); // NOI18N
+        jLabel1.setText("Departamentos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnBuscarIDDep, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnGuardarDep)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnModificarDep)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnEliminarDep)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnBuscarTodosDep))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(depNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(depClave, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(depNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(depClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscarIDDep)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarDep)
+                    .addComponent(btnModificarDep)
+                    .addComponent(btnEliminarDep)
+                    .addComponent(btnBuscarTodosDep))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void empNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empNombreActionPerformed
+
+    private void btnBuscarIDEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDEmpActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnBuscarIDEmpActionPerformed
+
+    private void btnGuardarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarEmpActionPerformed
+
+    private void btnModificarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEmpActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnModificarEmpActionPerformed
+
+    private void btnEliminarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarEmpActionPerformed
+
+    private void btnBuscarTodosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodosEmpActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnBuscarTodosEmpActionPerformed
+
+    private void depNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depNombreActionPerformed
+
+    private void btnBuscarIDDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDDepActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            if (depClave.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingresa un ID.");
+                return;
+            }
+
+            String[] columnNames = {"Clave", "Nombre",};
+            int id = Integer.valueOf(depClave.getText());
+
+            DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+            // Obtener los datos de la base de datos usando Hibernate
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            List<Departamento> listaDepartamentos = session.createQuery("from Departamento", Departamento.class).list();
+
+            // Llenar el modelo de la tabla con los datos obtenidos
+            for (Departamento dep : listaDepartamentos) {
+                if (dep.getClave() == id) {
+
+                    Object[] rowData = {
+                        dep.getClave(),
+                        dep.getNombre(),};
+                    model.addRow(rowData);
+                    System.out.println("Clave: " + dep.getClave() + ", Nombre: " + dep.getNombre());
+                }
+            }
+
+            session.getTransaction().commit();
+
+            // Añadir la tabla dentro de un JScrollPane para hacerla desplazable
+           TablaDepartamentos.setModel(model);
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Ingresa un ID valido.");
+
+        }
+    }//GEN-LAST:event_btnBuscarIDDepActionPerformed
+
+    private void btnGuardarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDepActionPerformed
+        // TODO add your handling code here:
+
+        Departamento dep = new Departamento ();
+        dep.setNombre(depNombre.getText());
+                SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+        Transaction t=session.beginTransaction();
+        session.save(dep);
+//        
+       t.commit();
+       
+       
+        JOptionPane.showMessageDialog(this, "Se guardo departamento " + depNombre.getText());
+        
+
+    }//GEN-LAST:event_btnGuardarDepActionPerformed
+
+    private void btnModificarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarDepActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            if (depClave.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingresa un ID.");
+                return;
+            }
+
+            Departamento departamento = new Departamento();
+        departamento.setClave(Integer.valueOf(depClave.getText()));
+        
+           SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        
+        
+         Departamento departamentoEncontrado = session.get(Departamento.class, departamento.getClave());
+        if (departamentoEncontrado != null) {
+            departamentoEncontrado.setNombre(depNombre.getText());
+            session.update(departamentoEncontrado);
+            System.out.println("Departamento actualizado: " + departamentoEncontrado.getNombre());
+            JOptionPane.showMessageDialog(this, "Departamento " + departamento.getClave() + " actualizado a: " + departamentoEncontrado.getNombre());
+            
+        }
+        
+        t.commit();
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Ingresa un ID valido.");
+
+        }
+    }//GEN-LAST:event_btnModificarDepActionPerformed
+
+    private void btnEliminarDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDepActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            if (depClave.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingresa un ID.");
+                return;
+            }
+
+            Departamento departamento = new Departamento();
+            int clave = Integer.valueOf(depClave.getText());
+            departamento.setClave(clave);
+
+            SessionFactory sf = HibernateUtil.getSessionFactory();
+            Session session = sf.getCurrentSession();
+            Transaction t = session.beginTransaction();
+
+            Departamento departamentoEncontrado = session.get(Departamento.class, departamento.getClave());
+
+            if (departamentoEncontrado != null) {
+                session.delete(departamentoEncontrado);
+                JOptionPane.showMessageDialog(this, "Departamento eliminado: " + departamentoEncontrado.getNombre());
+
+            }
+            t.commit();
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(this, "Ingresa un ID valido.");
+
+        }
+    }//GEN-LAST:event_btnEliminarDepActionPerformed
+
+    private void btnBuscarTodosDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTodosDepActionPerformed
+        // TODO add your handling code here:
+
+      String[] columnNames = {"Clave", "Nombre",};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+
+        // Obtener los datos de la base de datos usando Hibernate
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List<Departamento> listaDepartamentos = session.createQuery("from Departamento", Departamento.class).list();
+
+        // Llenar el modelo de la tabla con los datos obtenidos
+        for (Departamento dep : listaDepartamentos) {
+            Object[] rowData = {
+                dep.getClave(),
+                dep.getNombre(),
+            };
+            model.addRow(rowData);
+            System.out.println("Clave: " + dep.getClave() + ", Nombre: " + dep.getNombre() );
+        }
+
+        session.getTransaction().commit();
+
+        // Añadir la tabla dentro de un JScrollPane para hacerla desplazable
+        TablaDepartamentos.setModel(model);
+
+    }//GEN-LAST:event_btnBuscarTodosDepActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaDepartamentos;
+    private javax.swing.JTable TablaEmpleados;
+    private javax.swing.JButton btnBuscarIDDep;
+    private javax.swing.JButton btnBuscarIDEmp;
+    private javax.swing.JButton btnBuscarTodosDep;
+    private javax.swing.JButton btnBuscarTodosEmp;
+    private javax.swing.JButton btnEliminarDep;
+    private javax.swing.JButton btnEliminarEmp;
+    private javax.swing.JButton btnGuardarDep;
+    private javax.swing.JButton btnGuardarEmp;
+    private javax.swing.JButton btnModificarDep;
+    private javax.swing.JButton btnModificarEmp;
+    private javax.swing.JTextField depClave;
+    private javax.swing.JTextField depNombre;
+    private javax.swing.JTextField empClave;
+    private javax.swing.JTextField empNombre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

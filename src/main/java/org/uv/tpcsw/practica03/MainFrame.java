@@ -98,7 +98,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-                DepartamentoGUI departamento=new DepartamentoGUI();
+        DepartamentosGUI departamento=new DepartamentosGUI();
         departamento.setVisible(true);
         jDesktopPane1.add(departamento);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
